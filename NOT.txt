@@ -1,0 +1,24 @@
+Spring is a Dependency Injection framework to make java applications loosely coupled. 
+Spring framework makes the development process easy for JavaEE applications. 
+Spring enables you to build applications from "plain old Java objects" (POJOs) and to apply enterprise services non-invasively to POJOS. 
+Spring was developed by Rod Johnson in 2003.
+
+SPRING FRAMEWORKS COMPONENTS - 
+1. Core Container
+2. AOP - Aspect Oriented Programming
+3. JDBC
+4. Web
+5. Testing
+
+In SpringBoot u have abstract layer over Spring framework.
+
+In the Spring Framework, the IoC container is responsible for managing the components of an application and injecting dependencies into them. The container creates the objects (beans), wires them together, configures them, and manages their complete lifecycle.
+
+Bean provides functionality to adding dependencies.
+A "bean" is a managed object that is instantiated, assembled, and managed by the Spring IoC container. Beans form the backbone of a Spring application and are the core building blocks that are wired together to create the application.
+
+SPRING ANNOTATIONS
+Traditionally, Spring allows a developer to manage bean dependencies by using XML-based configuration. 
+There is an alternative way to define beans and their dependencies. This method is a Java-based configuration. 
+Unlike the XML approach, Java-based configuration allows you to manage bean components programmatically. 
+That's why annotations were introduced..

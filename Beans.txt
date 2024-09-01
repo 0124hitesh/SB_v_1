@@ -1,0 +1,29 @@
+Bean provides functionality to adding dependencies.
+A "bean" is a managed object that is instantiated, assembled, and managed by the Spring IoC container. Beans form the backbone of a Spring application and are the core building blocks that are wired together to create the application.
+
+SPRING ANNOTATIONS
+Traditionally, Spring allows a developer to manage bean dependencies by using XML-based configuration. 
+There is an alternative way to define beans and their dependencies. This method is a Java-based configuration. 
+Unlike the XML approach, Java-based configuration allows you to manage bean components programmatically. 
+That's why annotations were introduced..
+
+Defining Beans - 
+1. Using Stereotype annotations
+2. Explicit Bean Declaration in Configuration Class
+
+Beans Lifecycles - 
+
+1. Beans Created - The bean instance is created by invoking a static factory method or an instance factory method (for annotation-based configuration).
+
+2. Dependency Injected - Spring sets the bean's properties and dependencies, either through setter injection, constructor injection, or field injection.
+
+3. Bean Intialized - if the bean implements the InitializingBean interface or defines a custom initialization method annotated with @PostConstruct, Spring invokes the initialization method after the bean has been configured.
+
+4. Bean in used - The bean is now fully initialized and ready to be used by the application.
+
+5. Bean Destroyed - The bean is now fully initialized and ready to be used by the application.
+
+BEAN LIFECYCLE HOOKS - 
+The @PostConstruct annotation is used to mark a method that should be invoked immediately after a bean has been constructed and all of its dependencies have been injected. 
+
+The @PreDestroy annotation is used to mark a method that should be invoked just before a bean is destroyed by the container. This method can perform any necessary cleanup or resource releasing tasks.

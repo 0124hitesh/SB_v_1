@@ -13,12 +13,3 @@ SPRING FRAMEWORKS COMPONENTS -
 In SpringBoot u have abstract layer over Spring framework.
 
 In the Spring Framework, the IoC container is responsible for managing the components of an application and injecting dependencies into them. The container creates the objects (beans), wires them together, configures them, and manages their complete lifecycle.
-
-Bean provides functionality to adding dependencies.
-A "bean" is a managed object that is instantiated, assembled, and managed by the Spring IoC container. Beans form the backbone of a Spring application and are the core building blocks that are wired together to create the application.
-
-SPRING ANNOTATIONS
-Traditionally, Spring allows a developer to manage bean dependencies by using XML-based configuration. 
-There is an alternative way to define beans and their dependencies. This method is a Java-based configuration. 
-Unlike the XML approach, Java-based configuration allows you to manage bean components programmatically. 
-That's why annotations were introduced..

@@ -15,6 +15,9 @@ public class Sb1Application implements CommandLineRunner {
 	@Autowired
 	Apple obj2;
 
+	@Autowired
+	DBService dbService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Sb1Application.class, args);
 //		spring interact with large no. of users, so it will create lot of data if we create new object for every user.
@@ -29,5 +32,7 @@ public class Sb1Application implements CommandLineRunner {
 //		eatApple function called twice with 2 different objects but "callThisBeforeAppleUsed" called only once
 		obj1.eatApple();
 		obj2.eatApple();
+
+		System.out.println(dbService.getData());
 	}
 }

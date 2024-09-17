@@ -3,6 +3,7 @@ package com.springBootWeb.springBootWeb.controllers;
 import com.springBootWeb.springBootWeb.dto.EmployeeDTO;
 import com.springBootWeb.springBootWeb.entities.EmployeeEntity;
 import com.springBootWeb.springBootWeb.repositories.EmployeeRepository;
+import com.springBootWeb.springBootWeb.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -12,28 +13,29 @@ import java.util.List;
 @RequestMapping("/employee")
 public class EmployeeContoller {
 
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
-    public EmployeeContoller(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeContoller(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
-//    @GetMapping(path = "/getMyMessage")
+
+    //    @GetMapping(path = "/getMyMessage")
 //    public String getMessage() {
 //        return "Message";
 //    }
 
     @GetMapping("/{employeeID}")
 //    public EmployeeDTO getEmployeeByID(@PathVariable(name = "employeeID") Long id) {
-    public EmployeeEntity getEmployeeByID(@PathVariable Long employeeID) {
+    public EmployeeDTO getEmployeeByID(@PathVariable Long employeeID) {
 //        return new EmployeeDTO(employeeID, "name", "emaill", 102, LocalDate.of(2024, 9, 11), true);
-        return employeeRepository.findById(employeeID).orElse(null);
+        return employeeService.getEmployeeByID(employeeID);
     }
 
     //    employees?age=5&name="HIT"
     @GetMapping
-    public List<EmployeeEntity> getAllEmployee(@RequestParam(required = false) Integer age, @RequestParam(required = false) String name) {
+    public List<EmployeeDTO> getAllEmployee(@RequestParam(required = false) Integer age, @RequestParam(required = false) String name) {
 //        return "HLO " + name + " " + age;
-        return employeeRepository.findAll();
+        return employeeService.getAllEmployee();
     }
 
 //    @PostMapping
@@ -43,7 +45,7 @@ public class EmployeeContoller {
 //    }
 
     @PostMapping
-    public EmployeeEntity createEmployee(@RequestBody EmployeeEntity inputEmployee) {
-        return employeeRepository.save(inputEmployee);
+    public EmployeeDTO createEmployee(@RequestBody EmployeeDTO inputEmployee) {
+        return employeeService.createEmployee(inputEmployee);
     }
 }

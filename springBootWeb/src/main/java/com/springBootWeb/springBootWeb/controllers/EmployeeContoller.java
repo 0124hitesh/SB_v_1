@@ -2,6 +2,7 @@ package com.springBootWeb.springBootWeb.controllers;
 
 import com.springBootWeb.springBootWeb.dto.EmployeeDTO;
 import com.springBootWeb.springBootWeb.services.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +56,7 @@ public class EmployeeContoller {
 //        return employeeService.createEmployee(inputEmployee);
 //    }
     @PostMapping
-    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO inputEmployee) {
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid EmployeeDTO inputEmployee) {
         EmployeeDTO savedEmployee = employeeService.createEmployee(inputEmployee);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }

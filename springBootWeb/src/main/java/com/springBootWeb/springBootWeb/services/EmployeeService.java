@@ -2,6 +2,7 @@ package com.springBootWeb.springBootWeb.services;
 
 import com.springBootWeb.springBootWeb.dto.EmployeeDTO;
 import com.springBootWeb.springBootWeb.entities.EmployeeEntity;
+import com.springBootWeb.springBootWeb.exceptions.ResourceNotFoundException;
 import com.springBootWeb.springBootWeb.repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -48,30 +49,30 @@ public class EmployeeService {
     }
 
     public EmployeeDTO updateEmployeeById(Long employeeId, EmployeeDTO employeeDTO) {
+        isExitsByEmployeeId(employeeId);
         EmployeeEntity employeeEntity = modelMapper.map(employeeDTO, EmployeeEntity.class);
         employeeEntity.setId(employeeId);
         EmployeeEntity savedEmployeeEntity = employeeRepository.save(employeeEntity);
         return modelMapper.map(savedEmployeeEntity, EmployeeDTO.class);
     }
 
-    public boolean isExitsByEmployeeId(Long employeeId) {
-        return employeeRepository.existsById((employeeId));
+    public void isExitsByEmployeeId(Long employeeId) {
+        boolean exist = employeeRepository.existsById((employeeId));
+        if (!exist) {
+            throw new ResourceNotFoundException("No employee exists with this id: " + employeeId);
+        }
     }
 
     public boolean deleteEmployeeById(Long employeeId) {
-        boolean exist = isExitsByEmployeeId(employeeId);
-        if (!exist) {
-            return false;
-        }
+        isExitsByEmployeeId(employeeId);
+
         employeeRepository.deleteById((employeeId));
         return true;
     }
 
     public EmployeeDTO updatePartialEmployeeById(Long employeeId, Map<String, Object> updates) {
-        boolean exist = isExitsByEmployeeId(employeeId);
-        if (!exist) {
-            return null;
-        }
+        isExitsByEmployeeId(employeeId);
+
 
         EmployeeEntity employeeEntity = employeeRepository.findById(employeeId).get();
         updates.forEach((key, value) -> {

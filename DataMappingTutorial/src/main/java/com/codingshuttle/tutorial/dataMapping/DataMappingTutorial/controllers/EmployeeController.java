@@ -2,6 +2,7 @@ package com.codingshuttle.tutorial.dataMapping.DataMappingTutorial.controllers;
 
 import com.codingshuttle.tutorial.dataMapping.DataMappingTutorial.entities.EmployeeEntity;
 import com.codingshuttle.tutorial.dataMapping.DataMappingTutorial.services.EmployeeService;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
